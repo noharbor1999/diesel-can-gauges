@@ -1,0 +1,84 @@
+{
+ "valid_single_solid": {
+  "base": [
+   true,
+   1
+  ],
+  "lid": [
+   true,
+   1
+  ]
+ },
+ "watertight": {
+  "base": true,
+  "lid": true
+ },
+ "outer_assembled_mm": [
+  50.0,
+  35.0,
+  20.0
+ ],
+ "base_h": 17.0,
+ "lid_t": 3.0,
+ "inner_cavity_mm": [
+  46.0,
+  31.0,
+  15.0
+ ],
+ "interference_mm3": {
+  "xiao_vs_base": 0.0,
+  "xiao_vs_lid": 0.0,
+  "plug_vs_base": 0.0,
+  "can_vs_base": 0.0,
+  "can_vs_xiao": 0.0,
+  "lid_vs_base": 0.0
+ },
+ "min_gap_mm": {
+  "xiao_to_base": 0.0,
+  "plug_to_base": 0.25,
+  "xiao_top_to_lid": 8.2
+ },
+ "usb_opening": {
+  "w": 12.0,
+  "h": 7.0,
+  "centre_y": 17.5,
+  "centre_z": 7.25,
+  "z_range": [
+   3.75,
+   10.75
+  ]
+ },
+ "wire_slot": {
+  "w": 6.2,
+  "h": 2.4,
+  "centre_z": 8.0
+ },
+ "xiao_cradle": {
+  "pocket_L_W": [
+   21.5,
+   18.3
+  ],
+  "pcb_underside_z": 4.0,
+  "stops_top_z": 5.3,
+  "plinth_W": 15.4,
+  "pcb_usb_edge_x": 3.8
+ },
+ "free_for_can_board_x": [
+  26.65,
+  48.0
+ ],
+ "can_board_EG": [
+  17.0,
+  15.0,
+  10.0
+ ],
+ "lid": {
+  "method": "4 x M2 socket cap + M2 heat-set inserts",
+  "screw": "M2 x 6 socket cap (0.9 lid + 4.0 insert + 1.1 in the pilot)",
+  "insert_hole": [
+   3.2,
+   4.0
+  ],
+  "boss_d": 6.6
+ }
+}
