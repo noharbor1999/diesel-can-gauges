@@ -1,0 +1,86 @@
+id_hex,id_dec,count,period_ms_median,rate_hz,dlc,bytes_changing,bytes_constant,function_guess,confidence
+0x122,290,990,100.0,10.0,4,b0(5),b1=0x02 b2=0x00 b3=0x00,"Ignition / key state, byte 0 (and byte 1). On this truck: 0x00 early, 0x03 brief, 0x04 = key RUN (from 6.10 s, engine still stopped), 0x05 then 0x15 around crank 36.12-37.00 s, then 0x04 with engine running.","known ID (magikh0e $122, Jeep codes). Byte values on this truck are an educated guess from correlation with 0x322 RPM (Jeep lists 0x0402 as 'engine running'; here 0x04 is key RUN, engine may be off)."
+0x12B,299,703,139.99,7.14,1,b0(2),,unknown,unknown — no public match claimed
+0x1C0,448,494,200.0,5.0,6,b4(2),b0=0x00 b1=0x00 b2=0x00 b3=0x80 b5=0x48,"RKE / lock-unlock family, 6-byte, ~200 ms. Idle payload 00 00 00 80 11 48. Byte 4 0x11->0x51 at 6.12-9.13 s tracks the key going to RUN, not a lock command.",known ID (magikh0e $1C0). Jeep lock codes (byte 0 = 0x21/0x23/0x24) did not appear; locks were not clearly logged.
+0x1C8,456,197,500.0,2.0,4,,b0=0x00 b1=0x00 b2=0x00 b3=0x00,unknown,unknown — no public match claimed
+0x1D0,464,95,1000.02,1.0,8,b0(2) b2(2),b1=0x27 b3=0x0F b4=0x00 b5=0x07 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x214,532,1092,99.98,10.0,8,b0(15) b1(232) b2(50) b3(244) b4(2) b7(3),b5=0x02 b6=0xF5,Same slowly-varying analog as CAN-C 0x214; dips at crank. Not a discrete light switch.,educated guess only; not decoded further
+0x22D,557,99,1000.02,1.0,8,,b0=0xFF b1=0x06 b2=0xFF b3=0xFF b4=0xFF b5=0xFF b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x230,560,197,501.96,1.99,4,b3(2),b0=0x00 b1=0x1E b2=0x64,unknown,unknown — no public match claimed
+0x232,562,492,200.0,5.0,8,b0(3) b1(3) b3(2),b2=0x00 b4=0x00 b5=0x00 b6=0xFF b7=0xFF,unknown,unknown — no public match claimed
+0x243,579,90,1039.94,0.96,6,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00,unknown,unknown — no public match claimed
+0x248,584,208,500.0,2.0,8,b2(2) b3(3) b4(3) b6(4),b0=0x00 b1=0x00 b5=0x00 b7=0xAA,unknown,unknown — no public match claimed
+0x24E,590,984,100.0,10.0,8,b0(12) b1(110) b2(4),b3=0x00 b4=0x00 b5=0x00 b6=0xFE b7=0xFE,unknown,unknown — no public match claimed
+0x252,594,984,100.0,10.0,8,b1(17) b2(2) b3(17) b4(2) b5(6) b6(5) b7(7),b0=0x03,unknown,unknown — no public match claimed
+0x273,627,90,1039.94,0.96,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x2AD,685,99,1000.02,1.0,8,,b0=0x60 b1=0x30 b2=0x05 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x2AF,687,984,99.96,10.0,2,b0(2) b1(3),,unknown,unknown — no public match claimed
+0x2B0,688,39,99.96,10.0,3,b0(5),b1=0x00 b2=0x00,unknown,unknown — no public match claimed
+0x2C2,706,492,200.0,5.0,4,b2(22),b0=0x18 b1=0xFA b3=0x00,"Battery voltage = byte 2 / 10 volts (DLC 4). 12.5-12.7 V key-on, sag to 10.6 V at crank, 13.7-14.5 V running.",known (magikh0e $2C2; formula confirmed by crank sag and alternator rise on this log)
+0x2C3,707,984,100.0,10.0,8,b3(2) b4(3) b5(5) b6(3) b7(6),b0=0x00 b1=0x01 b2=0x00,unknown,unknown — no public match claimed
+0x2C5,709,49,2000.01,0.5,8,,b0=0x01 b1=0xEE b2=0xEE b3=0x08 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x2D3,723,90,1039.94,0.96,8,,b0=0x07 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,Network-management wake / center-dash buttons. Payload stayed 07 00 00 00 00 00 00 00 (no button presses).,known (magikh0e $2D3)
+0x2E0,736,493,200.0,5.0,8,b0(2),b1=0x0F b2=0x0F b3=0xFF b4=0xFF b5=0xFF b6=0xFF b7=0xFF,unknown,unknown — no public match claimed
+0x2E2,738,169,998.85,1.0,4,b0(3) b2(48),b1=0x01 b3=0x00,unknown,unknown — no public match claimed
+0x2F2,754,160,999.63,1.0,3,b1(49),b0=0x00 b2=0x00,unknown,unknown — no public match claimed
+0x2F8,760,102,1000.01,1.0,8,b3(2),b0=0xFF b1=0xFF b2=0xFF b4=0x00 b5=0x00 b6=0x7E b7=0x00,unknown,unknown — no public match claimed
+0x2FA,762,199,500.0,2.0,8,b1(2) b2(2),b0=0x01 b3=0x18 b4=0xC8 b5=0xC8 b6=0xC8 b7=0x00,"Lighting / dimmer candidate. Default 01 01 00 18 C8 C8 C8 00. While lights were on (59.49-61.70 s): 01 00 C8 18 C8 C8 C8 00 (byte 2 = 0xC8, byte 1 = 0).",educated guess (ID is a JL lighting/window candidate; byte 2 uses the documented Jeep dimmer maximum 0xC8 and moves with 0x3B2 lighting flags). Only 0x00/0xC8 seen — sweep the dimmer wheel to confirm it is a level.
+0x2FF,767,984,100.0,10.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0xFF b5=0xFF b6=0xFF b7=0xFF,unknown,unknown — no public match claimed
+0x301,769,95,1039.94,0.96,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x302,770,95,1039.94,0.96,8,b1(2),b0=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x305,773,99,1000.01,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x30A,778,120,999.99,1.0,8,b3(5) b4(2) b5(2) b6(3) b7(3),b0=0x08 b1=0xB2 b2=0xFF,unknown,unknown — no public match claimed
+0x30E,782,100,1004.91,1.0,8,b0(2) b1(8),b2=0x1C b3=0x00 b4=0x07 b5=0xFF b6=0x07 b7=0xFF,unknown,unknown — no public match claimed
+0x30F,783,200,484.56,2.06,7,b0(2),b1=0x0A b2=0x0A b3=0x0A b4=0x0A b5=0x0A b6=0x01,unknown,unknown — no public match claimed
+0x317,791,95,1039.94,0.96,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x3A b7=0x00,unknown,unknown — no public match claimed
+0x318,792,997,100.0,10.0,8,b0(4) b2(8),b1=0x00 b3=0xFC b4=0x00 b5=0x0C b6=0xFF b7=0x00,Steering-column levers and wiper-like byte 2. Same layout as CAN-C 0x318.,known ID (opendbc / JL). See the CAN-C 0x318 note for left/right and wiper caveats.
+0x322,802,984,100.0,10.0,8,b0(11) b1(74) b4(3) b5(29) b6(11) b7(157),b2=0x00 b3=0x00,Cluster / body RPM and speed. RPM = bytes 0-1 big-endian (0xFFFF or 0 = engine off). Speed = bytes 2-3 / 200 mph (stayed 0; truck was parked).,"known (magikh0e / JL Wrangler notes; RPM matches 0x108 on the other capture: off, then ~700 idle, blip >2000)"
+0x32A,810,103,1000.01,1.0,8,b1(2) b5(3),b0=0x00 b2=0xF8 b3=0xFE b4=0x1F b6=0x07 b7=0x00,unknown,unknown — no public match claimed
+0x32C,812,100,1000.0,1.0,8,b0(2) b1(2) b2(2) b3(2) b4(2) b5(2) b6(2),b7=0xFB,unknown,unknown — no public match claimed
+0x32D,813,99,1000.01,1.0,8,,b0=0x07 b1=0xFF b2=0x07 b3=0xFF b4=0x07 b5=0xFF b6=0xFF b7=0x00,unknown,unknown — no public match claimed
+0x32E,814,99,1000.01,1.0,6,,b0=0xFF b1=0xFF b2=0xFF b3=0xFF b4=0xFF b5=0xFF,unknown,unknown — no public match claimed
+0x32F,815,90,1039.94,0.96,3,,b0=0xFF b1=0x00 b2=0x00,unknown,unknown — no public match claimed
+0x332,818,214,499.96,2.0,8,b0(3) b1(2) b2(4) b3(2) b4(6) b5(2) b7(2),b6=0xFF,"Brake / gear info candidate. Byte 2 0x18 usual, 0x58 in pulses at 78.06-82.75 s.","educated guess (JL V5 list calls 0x332 BRAKE_GEAR_INFO_ID). Pulsed, not a single held pedal; unconfirmed."
+0x33A,826,98,1004.91,1.0,8,b4(3),b0=0xFF b1=0xFF b2=0x64 b3=0x7F b5=0x64 b6=0x7F b7=0x7F,unknown,unknown — no public match claimed
+0x33B,827,979,100.19,9.98,8,,b0=0xFF b1=0xFF b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x340,832,103,1000.0,1.0,8,b2(2) b5(2),b0=0xFF b1=0xFF b3=0xF0 b4=0xF0 b6=0xFF b7=0xFF,Vehicle speed / gear candidate on Jeep IHS. This log is mostly 0xFF (parked / not populated).,known ID (JL forum); no usable speed bytes in this parked capture
+0x342,834,95,1039.94,0.96,5,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00,unknown,unknown — no public match claimed
+0x34E,846,98,1004.91,1.0,8,,b0=0x7F b1=0x64 b2=0x7F b3=0x7F b4=0x00 b5=0x0F b6=0x00 b7=0x64,unknown,unknown — no public match claimed
+0x358,856,99,1000.02,1.0,4,,b0=0xFF b1=0x01 b2=0xFF b3=0x00,unknown,unknown — no public match claimed
+0x35C,860,90,1039.94,0.96,6,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x0F b5=0x00,unknown,unknown — no public match claimed
+0x36F,879,98,1004.91,1.0,8,,b0=0x4E b1=0x7F b2=0x7F b3=0x7F b4=0x7F b5=0x7F b6=0x7F b7=0x7F,unknown,unknown — no public match claimed
+0x37A,890,98,1004.91,1.0,8,,b0=0x7F b1=0x7F b2=0x7F b3=0x07 b4=0xE7 b5=0x7F b6=0x7F b7=0x7F,unknown,unknown — no public match claimed
+0x381,897,49,2000.02,0.5,8,,b0=0x01 b1=0x4A b2=0x00 b3=0x02 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x38F,911,94,1000.0,1.0,8,,b0=0x72 b1=0x00 b2=0x24 b3=0x49 b4=0x05 b5=0x0E b6=0x01 b7=0x01,unknown,unknown — no public match claimed
+0x394,916,99,1000.0,1.0,8,,b0=0xFF b1=0x7F b2=0x00 b3=0x7F b4=0x00 b5=0xFC b6=0xF0 b7=0xFC,unknown,unknown — no public match claimed
+0x395,917,197,500.0,2.0,8,,b0=0x03 b1=0xFF b2=0xF7 b3=0xFF b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3A0,928,90,1039.94,0.96,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x06,unknown,unknown — no public match claimed
+0x3A2,930,99,1000.01,1.0,6,b3(4),b0=0x00 b1=0x00 b2=0x01 b4=0xFF b5=0x01,unknown,unknown — no public match claimed
+0x3B2,946,115,999.98,1.0,8,b0(4) b7(2),b1=0x00 b2=0x86 b3=0x00 b4=0x00 b5=0xFF b6=0xFF,"Lighting-status flags, byte 0: 0x03 idle, 0x83 lights on (59.48-61.71 s), 0x13 with one turn-signal (72.54-73.56 s), 0x0B with the other (74.54-76.86 s).",educated guess (JL notes list 0x3B2 as lighting / dimmer / door / lock status; flags line up with 0x318 and 0x2FA)
+0x3B3,947,49,2000.02,0.5,8,,b0=0x01 b1=0x10 b2=0x08 b3=0x01 b4=0x80 b5=0xA1 b6=0x07 b7=0x00,unknown,unknown — no public match claimed
+0x3B4,948,49,2000.02,0.5,8,,b0=0x11 b1=0x17 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3C9,969,99,1000.02,1.0,4,,b0=0x73 b1=0x40 b2=0x00 b3=0x00,unknown,unknown — no public match claimed
+0x3D2,978,100,1000.01,1.0,4,b3(2),b0=0x35 b1=0xB2 b2=0xCB,Odometer candidate on some FCA IHS lists. Not decoded here.,known ID only (JL / magikh0e candidate); payload not interpreted
+0x3D8,984,49,2000.02,0.5,8,,b0=0x41 b1=0x00 b2=0x32 b3=0x14 b4=0xFE b5=0x3C b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3DE,990,104,999.99,1.0,8,b6(2),b0=0x1D b1=0x1E b2=0x1E b3=0x00 b4=0x03 b5=0x02 b7=0x02,unknown,unknown — no public match claimed
+0x3E0,992,921,100.01,10.0,8,b0(3) b1(3) b2(3) b3(3) b4(3) b5(3) b6(3) b7(3),,unknown,unknown — no public match claimed
+0x3E2,994,49,2000.02,0.5,3,,b0=0x01 b1=0x00 b2=0x00,unknown,unknown — no public match claimed
+0x3E3,995,49,2000.01,0.5,8,,b0=0xD1 b1=0x04 b2=0x10 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3E4,996,49,2000.04,0.5,8,,b0=0x81 b1=0xD3 b2=0x88 b3=0x22 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3E8,1000,49,2000.03,0.5,8,,b0=0x45 b1=0x1F b2=0x22 b3=0x73 b4=0xFF b5=0x00 b6=0x00 b7=0x0A,unknown,unknown — no public match claimed
+0x3E9,1001,49,2000.02,0.5,8,,b0=0x01 b1=0x1C b2=0x00 b3=0x00 b4=0x50 b5=0x3C b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3EA,1002,49,2000.01,0.5,8,,b0=0x41 b1=0x0A b2=0x55 b3=0x09 b4=0x1C b5=0xC0 b6=0x00 b7=0x04,unknown,unknown — no public match claimed
+0x3EB,1003,49,2000.0,0.5,8,,b0=0x43 b1=0xE8 b2=0x0D b3=0x5C b4=0x0A b5=0x50 b6=0x0A b7=0x1D,unknown,unknown — no public match claimed
+0x3F2,1010,49,2000.02,0.5,8,,b0=0x01 b1=0x02 b2=0x54 b3=0x00 b4=0x08 b5=0x00 b6=0x00 b7=0x02,unknown,unknown — no public match claimed
+0x3F4,1012,49,2000.03,0.5,8,,b0=0x11 b1=0x03 b2=0xFF b3=0x00 b4=0x86 b5=0x02 b6=0x00 b7=0x08,unknown,unknown — no public match claimed
+0x401,1025,290,300.83,3.32,8,b0(2) b1(4) b2(2) b3(3) b4(3) b5(2) b6(2) b7(2),,unknown,unknown — no public match claimed
+0x403,1027,282,302.58,3.3,8,b0(2) b1(3) b2(4) b3(3) b4(3) b5(2) b6(2) b7(2),,unknown,unknown — no public match claimed
+0x404,1028,279,359.86,2.78,8,b0(2) b1(2) b2(4) b3(3) b4(4) b5(2) b6(2) b7(2),,unknown,unknown — no public match claimed
+0x405,1029,342,259.94,3.85,8,b0(2) b1(3) b2(3) b3(3) b4(3) b5(2) b6(2) b7(2),,unknown,unknown — no public match claimed
+0x43F,1087,90,1039.94,0.96,8,,b0=0xFD b1=0x01 b2=0x3F b3=0x02 b4=0x00 b5=0xFF b6=0xFF b7=0xFF,unknown,unknown — no public match claimed
+0x44A,1098,49,2000.03,0.5,8,,b0=0x51 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x44C,1100,49,2000.01,0.5,8,,b0=0x71 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0xFF b7=0xFF,unknown,unknown — no public match claimed
+0x643,1603,90,1039.94,0.96,8,,b0=0x07 b1=0x59 b2=0x0E b3=0xFB b4=0xC1 b5=0x84 b6=0x00 b7=0x2A,unknown,unknown — no public match claimed
+0x652,1618,90,1039.94,0.96,8,,b0=0x07 b1=0x59 b2=0x39 b3=0xFB b4=0xC1 b5=0x47 b6=0x00 b7=0x28,unknown,unknown — no public match claimed
+0x676,1654,90,1039.94,0.96,8,,b0=0x07 b1=0x59 b2=0x0E b3=0xFB b4=0xC1 b5=0x84 b6=0x00 b7=0x2E,unknown,unknown — no public match claimed
+0x67C,1660,90,1039.94,0.96,8,,b0=0x07 b1=0x59 b2=0x0E b3=0xFF b4=0xC1 b5=0x40 b6=0x00 b7=0x2C,unknown,unknown — no public match claimed
