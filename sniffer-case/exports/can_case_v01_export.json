@@ -1,0 +1,72 @@
+{
+ "parts": {
+  "base": {
+   "extent_mm": [
+    50.0,
+    35.0,
+    17.0
+   ],
+   "watertight": true,
+   "winding_ok": true,
+   "volume_cm3": 10.415,
+   "brep_valid": true,
+   "solids": 1,
+   "faces": 7196,
+   "bed_contact_mm2": 1676.8,
+   "plate_xy_min_max": [
+    [
+     73.0,
+     110.5
+    ],
+    [
+     123.0,
+     145.5
+    ]
+   ]
+  },
+  "lid": {
+   "extent_mm": [
+    50.0,
+    35.0,
+    3.0
+   ],
+   "watertight": true,
+   "winding_ok": true,
+   "volume_cm3": 5.081,
+   "brep_valid": true,
+   "solids": 1,
+   "faces": 4956,
+   "bed_contact_mm2": 1621.4,
+   "plate_xy_min_max": [
+    [
+     133.0,
+     110.5
+    ],
+    [
+     183.0,
+     145.5
+    ]
+   ]
+  }
+ },
+ "3mf": {
+  "entries": [
+   "[Content_Types].xml",
+   "_rels/.rels",
+   "3D/3dmodel.model"
+  ],
+  "has_settings": false,
+  "objects": 2,
+  "readback_watertight": {
+   "can_case_v01_base": true,
+   "can_case_v01_lid": true
+  },
+  "all_on_plate": true
+ },
+ "assembled_outer_mm": [
+  50.001,
+  35.0,
+  20.001
+ ],
+ "assembled_matches_50x35x20": true
+}

@@ -1,0 +1,19 @@
+label_text,quantity,where
+N0 CANH  OBD6,2,node 0 CANH wire - one label at each end
+N0 CANL  OBD14,2,node 0 CANL wire - one label at each end
+N0 GND  OBD4,2,node 0 ground wire - one label at each end
+N1 CANH  OBD3,2,node 1 CANH wire - each end (change pin if your test says otherwise)
+N1 CANL  OBD11,2,node 1 CANL wire - each end
+N1 GND  OBD5,2,node 1 ground wire - each end
+N2 CANH  OBD__,2,node 2 - write the pin number by hand
+N2 CANL  OBD__,2,node 2 - write the pin number by hand
+N2 GND  OBD4,2,node 2 ground - each end
+N3 CANH  OBD__,2,node 3 (spare)
+N3 CANL  OBD__,2,node 3 (spare)
+N4 CANH  OBD__,2,node 4 (spare)
+N4 CANL  OBD__,2,node 4 (spare)
+OBD16 BATT+ FUSE 1A,2,only if a node is powered from pin 16 through a fuse and buck
+BUCK OUT 5V,2,buck converter output to node 5V pin
+METER COM,2,multimeter COM lead - both ends
+METER V-OHM,2,multimeter V/ohm lead - both ends
+GATEWAY USB,2,gateway USB cable - both ends
