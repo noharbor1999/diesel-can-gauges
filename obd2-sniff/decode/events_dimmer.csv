@@ -1,0 +1,11 @@
+log,t_start_s,t_end_s,id,signal,observed,interpretation,confidence
+pins_3-11_dimmer.csv,8.15,38.01,0x3B2 / 0x2FA,headlights,"0x3B2 b0 0x03->0x83 (131) at 8.15, back 0x03 at 38.01; 0x2FA b2 jumps 0->200 at 8.16 and 200->0 at 38.01","Headlights on, then off. 0x2FA byte2 is 0 whenever lights are off.",confirmed by script
+pins_3-11_dimmer.csv,13.25,14.67,0x2FA,byte 6 wheel + byte 2 output,b6 200->0 (1-count steps); b2 200->34 (floors at 34),First down-sweep (wheel started at max).,confirmed by script
+pins_3-11_dimmer.csv,18.5,20.5,0x2FA,byte 6 wheel + byte 2 output,b6 0->200; b2 34->200,Up-sweep min to max.,confirmed by script
+pins_3-11_dimmer.csv,26.5,28.5,0x2FA,byte 6 wheel + byte 2 output,b6 200->0; b2 200->34,Second down-sweep.,confirmed by script
+pins_3-11_dimmer.csv,30.5,32.0,0x2FA,byte 6 wheel + byte 2 output,b6 0->200; b2 34->200,"Second up-sweep, then a partial down/up around 34.5-37 before lights off.",confirmed by script
+pins_6-14_dimmer.csv,10.69,34.73,0x334,headlights + byte 6 output,"byte7 0->2 at 10.69, back 0 at 34.73; byte6 jumps 0->200 at lights on, 200->0 at lights off","Headlights on, then off. 0x334 byte6 is 0 whenever lights are off (illumination output).",confirmed by script
+pins_6-14_dimmer.csv,14.59,16.0,0x334,byte 6 illumination output,"200->34, 1-count steps, floors at 34",First down-sweep on CAN-C (separate clock from IHS).,confirmed by script
+pins_6-14_dimmer.csv,19.0,20.5,0x334,byte 6 illumination output,34->200,Up-sweep.,confirmed by script
+pins_6-14_dimmer.csv,27.5,29.0,0x334,byte 6 illumination output,200->34,Second down-sweep.,confirmed by script
+pins_6-14_dimmer.csv,31.0,31.91,0x334,byte 6 illumination output,"34->200, then holds until lights off at 34.73",Second up-sweep.,confirmed by script
