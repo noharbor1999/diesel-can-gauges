@@ -1,0 +1,132 @@
+id_hex,id_dec,count,period_ms_median,rate_hz,dlc,bytes_changing,bytes_constant,function_guess,confidence
+0x100,256,1,,,4,,b0=0x08 b1=0x3E b2=0x66 b3=0x54,unknown,unknown — no public match claimed
+0x101,257,1378,100.0,10.0,5,b0(2) b1(3) b2(27) b3(15),b4=0x00,unknown,unknown — no public match claimed
+0x102,258,13844,10.0,100.0,8,b0(2) b1(21) b2(4) b3(7) b4(3) b6(16) b7(247),b5=0x00,STEERING: steering angle / rate / checksum,"known (opendbc chrysler_ram_hd BO_258; 10 ms, DLC 8 matches)"
+0x108,264,13783,10.0,99.99,8,b0(11) b1(234) b2(11) b3(233) b4(20) b5(95) b6(16) b7(256),,"ECM_1: ENGINE_RPM bytes 0-1 big-endian, scale 1 rpm/bit; torque in later bits; counter/checksum in b6/b7","known (opendbc chrysler_ram_hd BO_264; verified: 0 until 63.75 s, crank to 942, idle ~700, blip to 2664)"
+0x10C,268,6930,19.88,50.3,8,b0(17) b1(62) b6(16) b7(176),b2=0x1F b3=0xFF b4=0xFF b5=0x00,ESP_2: ESC / ACC torque request (opendbc BO_268),known (opendbc chrysler_ram_hd ID and DLC match; not byte-verified on this log)
+0x110,272,1,,,6,,b0=0x01 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00,unknown,unknown — no public match claimed
+0x111,273,1,,,6,,b0=0x10 b1=0x76 b2=0x54 b3=0xFD b4=0xFF b5=0x00,unknown,unknown — no public match claimed
+0x112,274,6927,20.0,50.0,2,b0(5) b1(3),,unknown,unknown — no public match claimed
+0x118,280,13781,10.0,99.96,8,b0(4) b1(2) b2(3) b3(150) b4(11) b5(233) b6(32) b7(256),,ECM_TRQ: engine torque min/max (opendbc BO_280),known (opendbc chrysler_ram_hd ID and 10 ms / DLC 8 match; not byte-verified)
+0x11C,284,6930,19.9,50.24,8,b0(7) b1(82) b2(7) b3(82) b6(16) b7(103),b4=0x00 b5=0x00,ESP_8: brake pressure / BRAKE_PEDAL (12-bit) and Vehicle_Speed bytes 4-5 * 0.0078125 km/h,known (opendbc chrysler_ram_hd BO_284; speed stayed 0.0; pedal raw rose 0-1654 at 108.70-112.74 s)
+0x120,288,6891,20.0,50.0,7,b0(25) b1(62) b2(51) b5(16) b6(193),b3=0x1F b4=0xFF,"ECM_2: Accelerator_Position = byte 2 * 0.4 percent; b5 counter, b6 checksum-like","known (opendbc chrysler_ram_hd BO_288 DLC 7; verified: 0 at idle, 24% then 66% with RPM blips)"
+0x122,290,6892,20.0,50.0,6,b4(2) b5(2),b0=0x00 b1=0xFF b2=0x00 b3=0x0F,"Same ID as IHS ignition, but DLC 6 and almost constant on CAN-C. Do not use the IHS $122 map here.",unknown on this bus (ID collision / different payload)
+0x124,292,6930,19.97,50.08,8,b3(2),b0=0x00 b1=0x01 b2=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x126,294,13787,10.0,99.97,8,b0(3) b1(45) b2(3) b3(41) b4(3) b5(15) b6(16) b7(256),,unknown,unknown — no public match claimed
+0x134,308,6890,20.0,50.01,8,b2(30) b3(3) b5(51) b6(16),b0=0x08 b1=0x00 b4=0xFF b7=0xFF,unknown,unknown — no public match claimed
+0x140,320,6930,19.88,50.31,8,b0(3) b6(16) b7(33),b1=0x00 b2=0x00 b3=0x00 b4=0x80 b5=0x02,ESP_1: Brake_Pedal_State in byte 0 bits 2-3; Vehicle_Speed also in this frame,"known (opendbc chrysler_ram_hd BO_320; byte 0 0x80 idle / 0x85 pressed, same window as 0x11C)"
+0x144,324,6904,20.0,50.0,8,b0(2) b1(2) b2(2) b3(2) b4(2) b5(12) b6(201),b7=0x00,unknown,unknown — no public match claimed
+0x14B,331,6930,19.97,50.08,8,b1(92) b6(16) b7(112),b0=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0xFF,unknown,unknown — no public match claimed
+0x14C,332,6930,19.97,50.08,8,b0(2) b1(12) b2(2) b3(2) b4(10) b5(13) b6(16) b7(2),,unknown,unknown — no public match claimed
+0x158,344,6930,19.9,50.24,8,,b0=0xC0 b1=0x00 b2=0xC0 b3=0x00 b4=0xC0 b5=0x00 b6=0xFF b7=0xFF,ESP_6: four wheel speeds (opendbc BO_344),known (opendbc chrysler_ram_hd ID / 20 ms / DLC 8 match; truck was stationary so speeds not exercised)
+0x160,352,6899,20.0,50.0,8,b0(2),b1=0xC0 b2=0xFF b3=0x00 b4=0xFF b5=0xFF b6=0x00 b7=0xFF,unknown,unknown — no public match claimed
+0x16A,362,6900,20.0,50.0,8,b1(2) b6(16) b7(16),b0=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00,unknown,unknown — no public match claimed
+0x170,368,6904,20.0,50.0,8,b0(2) b1(2) b2(2),b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0xFF,Transmission_Status: gear state,"known (opendbc chrysler_ram_hd BO_368; not independently exercised, truck stayed in park)"
+0x178,376,1381,100.0,10.0,3,,b0=0x01 b1=0x78 b2=0x00,unknown,unknown — no public match claimed
+0x180,384,1379,100.0,10.0,8,b0(21) b1(4) b2(3) b6(6),b3=0x00 b4=0x00 b5=0x00 b7=0xFF,unknown,unknown — no public match claimed
+0x184,388,1392,100.0,10.0,4,b0(6),b1=0x00 b2=0x00 b3=0x00,unknown,unknown — no public match claimed
+0x1A0,416,6904,20.0,50.0,7,b2(2) b4(2) b5(16) b6(22),b0=0x07 b1=0xFF b3=0x1F,unknown,unknown — no public match claimed
+0x1C0,448,698,200.0,5.0,6,b4(2) b5(3),b0=0x00 b1=0x00 b2=0x00 b3=0x80,"RKE / lock-unlock family (body message, often gateway-rebroadcast on CAN-C)","known ID (magikh0e $1C0); this log stayed at idle 00 00 00 80 11 48, no lock/unlock command codes"
+0x1C8,456,277,500.0,2.0,4,,b0=0x00 b1=0x00 b2=0x00 b3=0x00,unknown,unknown — no public match claimed
+0x1D0,464,140,1000.02,1.0,8,b0(2) b2(2),b1=0x27 b3=0x0F b4=0x00 b5=0x07 b6=0x00 b7=0x00,ORC_1: seatbelt / restraints,known (opendbc chrysler_ram_hd BO_464; not exercised)
+0x200,512,1385,100.0,10.0,8,b4(2) b6(30),b0=0x86 b1=0x18 b2=0xFA b3=0x78 b5=0xFE b7=0xFF,unknown,unknown — no public match claimed
+0x202,514,13860,10.06,99.4,8,b4(3) b5(126),b0=0x00 b1=0x00 b2=0x00 b3=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x208,520,6926,20.01,49.97,8,b2(2),b0=0x3F b1=0xFF b3=0xFF b4=0x00 b5=0xAF b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x212,530,1379,100.0,10.0,8,b2(2) b3(2) b5(2) b6(2) b7(2),b0=0x00 b1=0x00 b4=0x00,unknown,unknown — no public match claimed
+0x214,532,1386,100.01,10.0,8,b0(15) b1(244) b2(55) b3(241) b7(3),b4=0x49 b5=0x02 b6=0xF5,Present on both buses; bytes 0 and 2 wander slowly and dip at crank. Not a clean light switch.,educated guess only as a related body/power signal; not the Jeep $291 lighting layout
+0x21E,542,10,100.01,10.0,8,b0(3) b1(3) b2(4) b3(5) b4(5) b5(6) b6(5) b7(6),,unknown,unknown — no public match claimed
+0x22D,557,139,1000.01,1.0,8,,b0=0xFF b1=0x06 b2=0xFF b3=0xFF b4=0xFF b5=0xFF b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x230,560,278,500.0,2.0,4,b3(2),b0=0x00 b1=0x1E b2=0x64,unknown,unknown — no public match claimed
+0x234,564,1386,100.01,10.0,4,b0(3) b3(5),b1=0x02 b2=0x0C,unknown,unknown — no public match claimed
+0x23A,570,6922,20.0,50.0,3,b1(16) b2(16),b0=0x00,"CRUISE_BUTTONS (3-byte): byte 0 switches, byte 1 counter, byte 2 checksum","known (opendbc chrysler_ram_hd BO_570; byte 0 stayed 0x00, no cruise presses)"
+0x243,579,139,1000.0,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x7F b5=0x64 b6=0x7F b7=0x7F,unknown,unknown — no public match claimed
+0x248,584,279,500.0,2.0,8,b6(2),b0=0x00 b1=0x00 b2=0x21 b3=0x0C b4=0x77 b5=0x00 b7=0xAA,unknown,unknown — no public match claimed
+0x270,624,139,1000.01,1.0,8,b7(2),b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00,unknown,unknown — no public match claimed
+0x278,632,1378,100.0,10.0,8,,b0=0x00 b1=0x00 b2=0xFF b3=0xFF b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x27F,639,139,1000.01,1.0,8,b1(3) b3(3) b4(2) b5(71),b0=0x72 b2=0x6D b6=0x02 b7=0x40,unknown,unknown — no public match claimed
+0x290,656,3,125.0,8.0,4,,b0=0x36 b1=0x33 b2=0x33 b3=0x39,unknown,unknown — no public match claimed
+0x294,660,6930,19.97,50.07,8,b3(65) b6(16) b7(125),b0=0xF7 b1=0xFF b2=0x00 b4=0x80 b5=0x00,unknown,unknown — no public match claimed
+0x2A0,672,1378,100.0,10.0,8,b0(4) b2(32) b4(10) b5(111) b7(3),b1=0x00 b3=0x7B b6=0x21,unknown,unknown — no public match claimed
+0x2A8,680,6904,20.0,50.0,8,b0(2) b1(2) b2(2) b6(16) b7(21),b3=0x0F b4=0x00 b5=0x00,unknown,unknown — no public match claimed
+0x2AB,683,1385,100.0,10.0,8,,b0=0xFE b1=0xFE b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x2AC,684,139,1000.01,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x2AD,685,139,999.99,1.0,8,,b0=0x60 b1=0x30 b2=0x05 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x2AF,687,139,1000.0,1.0,8,,b0=0x72 b1=0x00 b2=0x24 b3=0x49 b4=0x05 b5=0x0E b6=0x01 b7=0x01,unknown,unknown — no public match claimed
+0x2C1,705,139,1000.0,1.0,8,,b0=0x3F b1=0x00 b2=0xFF b3=0xFF b4=0xFF b5=0x7F b6=0x7F b7=0x7F,unknown,unknown — no public match claimed
+0x2C2,706,70,2000.0,0.5,8,,b0=0x15 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,"Same ID as IHS battery voltage, but DLC 8 and static on CAN-C. Do not use the IHS $2C2 map here.",unknown on this bus
+0x2C5,709,70,2000.01,0.5,8,,b0=0x01 b1=0xEE b2=0xEE b3=0x08 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x2C6,710,70,2000.0,0.5,8,,b0=0x03 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x2E0,736,2772,49.96,20.02,8,b4(2) b6(2) b7(2),b0=0x00 b1=0x00 b2=0xFF b3=0xFF b5=0x44,unknown,unknown — no public match claimed
+0x2E1,737,1386,100.03,10.0,8,b0(3) b1(6) b2(3) b3(8),b4=0xC0 b5=0xFE b6=0x18 b7=0x00,unknown,unknown — no public match claimed
+0x2F2,754,1385,99.99,10.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x03 b5=0xFF b6=0x03 b7=0xFF,unknown,unknown — no public match claimed
+0x2FC,764,1378,100.0,10.0,8,b0(2) b1(14) b2(12) b5(15) b7(24),b3=0xFF b4=0xFF b6=0xFF,unknown,unknown — no public match claimed
+0x305,773,139,1000.02,1.0,8,b0(2),b1=0x00 b2=0x03 b3=0x31 b4=0x2F b5=0x3C b6=0x3C b7=0xFF,unknown,unknown — no public match claimed
+0x306,774,139,1000.02,1.0,4,,b0=0x0F b1=0xFF b2=0xFF b3=0x00,unknown,unknown — no public match claimed
+0x308,776,143,999.98,1.0,8,b0(2) b1(2) b2(2) b5(2),b3=0x00 b4=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x30A,778,1378,100.0,10.0,8,b0(2) b4(8) b5(15) b6(25),b1=0x00 b2=0x80 b3=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x30B,779,138,1000.05,1.0,8,b3(2) b4(2) b6(2) b7(2),b0=0x3D b1=0xFB b2=0x23 b5=0x00,unknown,unknown — no public match claimed
+0x30E,782,139,999.95,1.0,8,,b0=0x03 b1=0xFF b2=0x07 b3=0xFF b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x30F,783,139,999.97,1.0,8,,b0=0x00 b1=0x00 b2=0x01 b3=0xFE b4=0x00 b5=0x00 b6=0x01 b7=0xFE,unknown,unknown — no public match claimed
+0x310,784,149,999.92,1.0,8,b0(6) b1(3) b2(2) b4(2) b5(2) b6(2),b3=0x00 b7=0x07,unknown,unknown — no public match claimed
+0x318,792,1405,100.0,10.0,8,b0(5) b2(8) b3(2) b5(2) b6(2),b1=0x00 b4=0x00 b7=0x00,STEERING_LEVERS: byte 0 turn signals / high-beam; byte 2 tracks wiper-like step values,"known ID (opendbc ram_hd TURN_SIGNALS / HIGH_BEAM_PRESSED; JL notes also put wipers here). Byte 0: 0x04 coincides with 0x334 high-beam display; 0x01 and 0x02 coincide with 0x334 turn-lamp blinks. Which of 0x01/0x02 is left vs right is unconfirmed (JL says 0x01=left, 0x02=right; 5th-gen BCM bit names disagree). Byte 2 wiper steps are an educated guess (values 0,1,2,3,4,5,0x0D,0x0E in one rising/falling burst)."
+0x31F,799,140,1000.0,1.0,8,b1(2) b5(2),b0=0xE8 b2=0x00 b3=0x40 b4=0x00 b6=0xFF b7=0x7F,unknown,unknown — no public match claimed
+0x324,804,146,999.98,1.0,8,b3(5) b5(4),b0=0xC8 b1=0x00 b2=0x00 b4=0x00 b6=0xC8 b7=0x00,unknown,unknown — no public match claimed
+0x32A,810,1378,100.0,10.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0xE0,unknown,unknown — no public match claimed
+0x330,816,141,1000.01,1.0,8,b4(2) b6(2) b7(2),b0=0x3F b1=0x00 b2=0x00 b3=0x00 b5=0x00,unknown,unknown — no public match claimed
+0x331,817,140,999.99,1.0,8,b0(2),b1=0xFF b2=0xFF b3=0xFF b4=0x7F b5=0x1F b6=0x00 b7=0xFF,unknown,unknown — no public match claimed
+0x334,820,178,999.95,1.0,8,b2(2) b3(3) b5(4) b6(2) b7(4),b0=0x40 b1=0x00 b4=0x01,"BCM_1: body status. Byte 6 is the dash-illumination / dimmer candidate (0x00 off, 0xC8=200 on). Byte 7 bit 2 tracks high beam display. Byte 3 bits 6 and 7 blink with the turn-signal lamps.","known ID (opendbc ram_hd BCM_1 doors / turn lamps / high-beam display). Byte 6 dimmer: educated guess (value 0xC8 is the documented Jeep $291 dimmer maximum; only 0x00 and 0xC8 appear in this log, so proportional travel of the dimmer wheel is not yet proven)."
+0x340,832,277,500.01,2.0,8,b2(2) b3(3),b0=0xFF b1=0xFF b4=0x00 b5=0x00 b6=0xFF b7=0xFF,unknown,unknown — no public match claimed
+0x355,853,139,1000.0,1.0,8,,b0=0xF0 b1=0xFF b2=0x03 b3=0x00 b4=0x00 b5=0x0C b6=0x00 b7=0xFD,unknown,unknown — no public match claimed
+0x358,856,139,1000.0,1.0,4,,b0=0xFF b1=0x01 b2=0xFF b3=0x00,unknown,unknown — no public match claimed
+0x35C,860,133,1039.94,0.96,6,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x0F b5=0x00,unknown,unknown — no public match claimed
+0x372,882,140,999.95,1.0,8,b1(2),b0=0x00 b2=0xFC b3=0xF0 b4=0x01 b5=0xFE b6=0x01 b7=0xFE,unknown,unknown — no public match claimed
+0x381,897,70,2000.02,0.5,8,,b0=0x01 b1=0x4A b2=0x00 b3=0x02 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x387,903,276,500.0,2.0,5,,b0=0x04 b1=0x00 b2=0x58 b3=0x00 b4=0x00,unknown,unknown — no public match claimed
+0x39C,924,139,1000.02,1.0,3,,b0=0x00 b1=0x00 b2=0x00,unknown,unknown — no public match claimed
+0x39E,926,70,2000.0,0.5,3,,b0=0x03 b1=0x00 b2=0x00,unknown,unknown — no public match claimed
+0x3A9,937,139,1000.0,1.0,8,,b0=0x1D b1=0x1E b2=0x1E b3=0x00 b4=0x03 b5=0x02 b6=0xF0 b7=0x02,unknown,unknown — no public match claimed
+0x3AA,938,139,999.96,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3AB,939,139,999.97,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3AC,940,139,999.97,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3AD,941,139,999.97,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3AE,942,139,999.97,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3AF,943,139,999.97,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3B3,947,70,2000.01,0.5,8,,b0=0x01 b1=0x10 b2=0x08 b3=0x01 b4=0x80 b5=0xA1 b6=0x07 b7=0x00,unknown,unknown — no public match claimed
+0x3B4,948,70,2000.01,0.5,8,,b0=0x11 b1=0x17 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3BE,958,139,999.95,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3BF,959,139,999.96,1.0,8,,b0=0x00 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3C0,960,277,499.99,2.0,4,b0(3),b1=0x00 b2=0x00 b3=0x00,unknown,unknown — no public match claimed
+0x3C9,969,139,1000.01,1.0,4,,b0=0x73 b1=0x40 b2=0x00 b3=0x00,unknown,unknown — no public match claimed
+0x3CA,970,4,100.02,10.0,8,,b0=0x48 b1=0x47 b2=0x36 b3=0x30 b4=0x35 b5=0x35 b6=0x39 b7=0x37,unknown,unknown — no public match claimed
+0x3CE,974,139,1000.01,1.0,5,,b0=0x00 b1=0x0F b2=0x64 b3=0x7F b4=0x7F,unknown,unknown — no public match claimed
+0x3D1,977,277,499.99,2.0,4,,b0=0x02 b1=0x00 b2=0x00 b3=0x00,unknown,unknown — no public match claimed
+0x3D3,979,70,1999.99,0.5,8,,b0=0xF1 b1=0xFF b2=0x5F b3=0x83 b4=0xF0 b5=0x05 b6=0xAF b7=0x15,unknown,unknown — no public match claimed
+0x3D4,980,70,1999.98,0.5,8,,b0=0x01 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x08,unknown,unknown — no public match claimed
+0x3D5,981,70,2000.02,0.5,8,,b0=0x01 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3D6,982,70,2000.01,0.5,8,,b0=0xDD b1=0x2B b2=0x00 b3=0x40 b4=0x00 b5=0x40 b6=0x40 b7=0x1F,unknown,unknown — no public match claimed
+0x3D7,983,70,2000.0,0.5,8,,b0=0x01 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3D8,984,70,2000.0,0.5,8,,b0=0x41 b1=0x00 b2=0x32 b3=0x14 b4=0xFE b5=0x3C b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3E0,992,1378,100.0,10.0,8,b0(3) b1(3) b2(3) b3(3) b4(3) b5(3) b6(3) b7(3),,unknown,unknown — no public match claimed
+0x3E1,993,1378,100.0,10.0,7,,b0=0x43 b1=0x26 b2=0x01 b3=0x1C b4=0x1F b5=0x00 b6=0x00,unknown,unknown — no public match claimed
+0x3E2,994,70,1999.99,0.5,3,,b0=0x01 b1=0x00 b2=0x00,unknown,unknown — no public match claimed
+0x3E3,995,70,2000.01,0.5,8,,b0=0xD1 b1=0x04 b2=0x10 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3E4,996,70,1999.99,0.5,8,,b0=0x81 b1=0xD3 b2=0x88 b3=0x22 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3E8,1000,278,500.0,2.0,8,,b0=0x45 b1=0x1F b2=0x22 b3=0x73 b4=0xFF b5=0x00 b6=0x00 b7=0x0A,unknown,unknown — no public match claimed
+0x3E9,1001,70,2000.0,0.5,8,,b0=0x01 b1=0x1C b2=0x00 b3=0x00 b4=0x50 b5=0x3C b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3EA,1002,70,2000.01,0.5,8,,b0=0x41 b1=0x0A b2=0x55 b3=0x09 b4=0x1C b5=0xC0 b6=0x00 b7=0x04,unknown,unknown — no public match claimed
+0x3EB,1003,139,999.98,1.0,8,,b0=0x43 b1=0xE8 b2=0x0D b3=0x5C b4=0x0A b5=0x50 b6=0x0A b7=0x1D,unknown,unknown — no public match claimed
+0x3F0,1008,70,2000.0,0.5,8,,b0=0xE9 b1=0x81 b2=0xBF b3=0x18 b4=0x01 b5=0x48 b6=0x7E b7=0x1A,unknown,unknown — no public match claimed
+0x3F1,1009,70,1999.98,0.5,8,,b0=0xC5 b1=0xA9 b2=0x63 b3=0x08 b4=0x00 b5=0x00 b6=0x6F b7=0x54,unknown,unknown — no public match claimed
+0x3F2,1010,70,2000.0,0.5,8,,b0=0x01 b1=0x02 b2=0x54 b3=0x00 b4=0x08 b5=0x00 b6=0x00 b7=0x02,unknown,unknown — no public match claimed
+0x3F3,1011,70,2000.0,0.5,8,,b0=0x65 b1=0x00 b2=0x61 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x3F4,1012,70,1999.99,0.5,8,,b0=0x11 b1=0x03 b2=0xFF b3=0x00 b4=0x86 b5=0x02 b6=0x00 b7=0x08,unknown,unknown — no public match claimed
+0x3F5,1013,70,2000.0,0.5,8,,b0=0xCD b1=0x43 b2=0x00 b3=0x00 b4=0x03 b5=0x00 b6=0x50 b7=0x05,unknown,unknown — no public match claimed
+0x3F6,1014,70,2000.0,0.5,8,,b0=0x01 b1=0xA9 b2=0x82 b3=0x33 b4=0xBA b5=0xBA b6=0x55 b7=0x55,unknown,unknown — no public match claimed
+0x3F7,1015,70,2000.0,0.5,8,,b0=0xC1 b1=0x2E b2=0x81 b3=0x3C b4=0x50 b5=0x88 b6=0x0B b7=0x00,unknown,unknown — no public match claimed
+0x400,1024,290,480.01,2.08,8,b0(2) b1(2) b2(2) b3(3) b4(3) b5(3) b6(3) b7(2),,unknown,unknown — no public match claimed
+0x401,1025,290,480.0,2.08,8,b0(2) b1(2) b2(2) b3(3) b4(3) b5(2) b6(2) b7(2),,unknown,unknown — no public match claimed
+0x402,1026,290,479.97,2.08,8,b0(2) b1(3) b2(2) b3(2) b4(3) b5(2) b6(2) b7(2),,unknown,unknown — no public match claimed
+0x407,1031,290,479.76,2.08,8,b0(2) b1(2) b2(2) b3(3) b4(3) b5(2) b6(2) b7(2),,unknown,unknown — no public match claimed
+0x423,1059,289,480.02,2.08,8,b0(2) b1(2) b2(2) b3(3) b4(4) b5(3) b6(3) b7(2),,unknown,unknown — no public match claimed
+0x44A,1098,70,1999.99,0.5,8,,b0=0x51 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0x00 b7=0x00,unknown,unknown — no public match claimed
+0x44C,1100,70,1999.99,0.5,8,,b0=0x71 b1=0x00 b2=0x00 b3=0x00 b4=0x00 b5=0x00 b6=0xFF b7=0xFF,unknown,unknown — no public match claimed
