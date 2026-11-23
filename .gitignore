@@ -1,0 +1,28 @@
+# Build and tool caches
+build/
+dist/
+out/
+coverage/
+target/
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.cache/
+.next/
+
+# Local backups and archives
+*.bak
+*.bak-*
+*.orig
+*.zip
+
+# Compiled firmware images (build from source)
+*.bin
+firmware/bins/
+firmware_bins/
+
+# Large raw captures (never commit vehicle logs)
+data/logs/
+*.savvycan

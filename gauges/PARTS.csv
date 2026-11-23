@@ -1,0 +1,20 @@
+item,kind,qty_in_use,qty_available,qty_salvage,qty_on_order,status,last_reported_location,packing_status,source,notes
+ESP32-C3 SuperMini,component,1,unknown,0,0,on hand,unknown,on hand,inventory.csv row 4,main MCU
+Waveshare 1.28in round LCD (GC9A01),component,1,unknown,0,0,on hand,unknown,on hand,inventory.csv row 133,"RST to 3V3, BL to GPIO8"
+EC11 rotary encoder with push,component,1,unknown,0,0,on hand,unknown,on hand,inventory.csv rows 279/280,10-packs
+MP1584EN fixed 5 V mini buck (green),component,1,3,0,0,on hand,inventory tote 12 (Power),on hand,inventory.csv row 678,replaces LM2596; ~23 V max input; 1 of 4 spares (1 more allocated to AA pack)
+MAX31856 thermocouple amp (generic Adafruit 3263 clone),component,1,0,0,2,ordered Nov 15,in transit,not yet packed in Project 3,inventory.csv (Nov 15),no silkscreen; verify pinout
+MLT-9650 / HN9650B 5 V active buzzer,component,0,unknown,0,0,not used — replaced by piezo,unknown,do not pack,inventory.csv row 286,magnetic; needs 1N4148; backup to 3-24 V piezo
+PNP transistor 2N3906,component,1,unknown,0,0,on hand,unknown,on hand,inventory.csv rows 300/302,buzzer driver Q1
+NPN transistor 2N2222,component,1,unknown,0,0,on hand,unknown,on hand,inventory.csv rows 300/302,buzzer driver Q2
+"Photoresistor (LDR, kit module or GL5528)",component,1,unknown,0,ordered,ordered Nov 15 (HiLetgo LDR); kit module as backup,unknown,not yet packed in Project 3,ELEGOO 37-in-1 / SunFounder kits,light sensor on GPIO1; power from 3V3
+Resistor 10k,component,5,unknown,0,0,on hand (3 W kit),unknown,on hand (3 W resistor kit),inventory.csv row 282,4 buzzer driver + 1 LDR divider
+Resistor 2.2k,component,1,unknown,0,0,on hand (3 W kit),unknown,on hand (3 W resistor kit),inventory.csv row 282,buzzer driver R3
+Resistor 1k,component,1,unknown,0,0,on hand (3 W kit),unknown,on hand (3 W resistor kit),inventory.csv row 282,series in encoder B line
+100 nF ceramic capacitor (104),component,1,0,0,assortment,"ordered Nov 15, arriving Nov 16",in transit,not yet packed in Project 3,inventory.csv (Nov 15),LDR filter
+Add-a-circuit mini fuse tap + 1 A mini fuse,component,1,0,0,ordered,ordered Nov 15,in transit,not yet packed in Project 3,README v7,match truck fuse style
+Ground ring terminal 22-18 AWG #10 (heat shrink),component,1,0,0,ordered,ordered Nov 15,in transit,not yet packed in Project 3,README v7,stock rings are 12-10 AWG
+26 AWG silicone / PTFE hookup wire,component,as needed,unknown,0,0,on hand,unknown,on hand,inventory.csv rows 241/242,
+Heat shrink,component,as needed,unknown,0,0,on hand,unknown,on hand,inventory.csv rows 243-245,
+A-pillar pod (printed),printed,1,0,0,0,"not designed yet (CAD, after 3D scanner)",n/a,not yet packed in Project 3,CAD,iDash Stealth Pod style
+Piezo tone buzzer 3-24 V,component,1,0,0,ordered,ordered Nov 15,in transit,not yet packed in Project 3,notes Nov 15,"primary buzzer; same driver, fed from 5 V; no diode needed (no coil)"
