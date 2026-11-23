@@ -1,0 +1,14 @@
+date_time,state,pin,volts,notes
+2026-11-22 11:36,key_off_10min,6,0.015,
+2026-11-22 11:36,key_off_10min,11,0.006,
+2026-11-22 11:36,key_off_10min,14,0.015,
+2026-11-22 11:36,key_off_10min,16,12.42,
+2026-11-22 11:36,key_off_10min,all_others,0,all remaining pins read 0 V
+2026-11-22 11:41,key_on,3,2.64,
+2026-11-22 11:41,key_on,6,2.72,
+2026-11-22 11:41,key_on,11,2.45,
+2026-11-22 11:41,key_on,14,2.34,
+2026-11-22 11:41,key_on,16,12.19,
+2026-11-22 11:41,key_on,all_others,0,all remaining pins read 0 V
+2026-11-22 11:44,key_off_ohms,3-11,,62.8 ohm
+2026-11-22 11:44,key_off_ohms,6-14,,61.5 ohm
