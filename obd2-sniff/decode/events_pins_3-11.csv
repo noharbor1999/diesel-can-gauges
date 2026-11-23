@@ -1,0 +1,12 @@
+log,t_start_s,t_end_s,id,signal,observed,interpretation,confidence
+pins_3-11.csv,0.0,6.1,0x122,byte0,"00, 03, then 04","Key activity, then key to RUN at 6.10 s (engine still off)",known ID; byte meaning educated guess from RPM correlation
+pins_3-11.csv,6.12,9.13,0x1C0,byte4,11 -> 51 -> 11,"Tracks the key-RUN transition, not a Jeep-style lock command (byte0 stayed 00)","known ID; this change is an educated guess as ignition-related, not locks"
+pins_3-11.csv,36.12,37.0,0x122 / 0x322 / 0x2C2,crank,0x122=05 then 15; RPM leaves 0 at 36.90 s; battery sags to 10.6 V,"Engine crank / start, then 0x122 returns to 04 with engine running",known IDs; 0x122 crank codes are an educated guess
+pins_3-11.csv,37.0,59.0,0x322 / 0x2C2,idle / charging,RPM ~700; battery 13.7-14.5 V,Idle with alternator charging,known
+pins_3-11.csv,59.49,61.7,0x2FA / 0x3B2,lights / dimmer,"0x2FA byte2=0xC8, byte1=0; 0x3B2 byte0=0x83","Lights on for ~2.2 s, then off. Best IHS dash-illumination candidate.",educated guess (0xC8 = Jeep dimmer max; flags move together)
+pins_3-11.csv,62.84,63.08,0x318,byte0,0x40 pulse,Same unknown stalk/button pulse seen on CAN-C,unknown
+pins_3-11.csv,64.12,71.0,0x318,byte2,02-03-04-05-0D-0E then down to 00,"Wipers on, through speeds, then off",educated guess (same pattern as CAN-C 0x318 byte2)
+pins_3-11.csv,72.52,73.8,0x318 / 0x3B2,turn,0x318 byte0=0x02; 0x3B2 byte0=0x13,Turn signal (side unconfirmed; this is the 0x02 stalk code),known as a turn signal; side unconfirmed
+pins_3-11.csv,74.52,76.84,0x318 / 0x3B2,turn,0x318 byte0=0x01; 0x3B2 byte0=0x0B,The other turn signal (0x01 stalk code),known as a turn signal; side unconfirmed
+pins_3-11.csv,78.06,82.75,0x332,byte2,0x18 <-> 0x58 pulses,Possible brake-switch pulses (ID is a JL brake/gear message). Not a single held press.,educated guess; unconfirmed
+pins_3-11.csv,85.0,90.5,0x322,RPM,"blip to 2411, then back to ~700",Throttle blip (no IHS throttle byte was confirmed; RPM is known),known (0x322 RPM)

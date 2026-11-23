@@ -1,0 +1,14 @@
+log,t_start_s,t_end_s,id,signal,observed,interpretation,confidence
+pins_3-11_run2.csv,0.0,13.19,0x122,ignition,"00 01, then 00 02 / 03 02, then 04 02 at 13.19","Key off, then key ON (engine off)",confirmed by script
+pins_3-11_run2.csv,13.19,26.05,0x122,ignition,04 02,"Key ON, engine off (step 2)",confirmed by script
+pins_3-11_run2.csv,26.05,38.07,0x2FA / 0x2E2,locks,"0x2FA b0 00->40 at 26.05, 40->00 at 38.07; 0x2E2 b0 pulse 04 then 02","Lock doors, wait, unlock. 0x1C0 did not carry a lock command.",confirmed by script
+pins_3-11_run2.csv,49.36,59.43,0x2FA / 0x3B2,headlights,"0x2FA b2=C8, 0x3B2 b0=83 for ~10 s, then off","Headlights on 10 s, then off. Illumination output is 0xC8 only while lights are on.",confirmed by script
+pins_3-11_run2.csv,79.59,80.79,0x2FA,dimmer bytes 4 and 6,"b2 stayed 00; b4 and b6 00->C8->00 in 1.2 s, no intermediate steps","In the dimmer-step window, but headlights were off so b2 (illumination) stayed 0. Not a proportional sweep.",confirmed by script (event exists); not a proven linear dimmer level
+pins_3-11_run2.csv,89.65,101.17,0x318,byte2 wipers,"steps to 0x0D, held ~11 s, then off","Wipers low, then off. 0x0D is the held low/continuous value.",confirmed by script
+pins_3-11_run2.csv,111.81,117.75,0x332,byte2,"0x18 -> 0x58 for 5.9 s, then back","Brake pedal held ~6 s, then released. Confirms the run-1 0x332 guess.",confirmed by script
+pins_3-11_run2.csv,128.45,133.87,0x318 / 0x3B2,left turn,0x318 b0=01; 0x3B2 b0 blinks 0x0B,Left turn signal (script did left first).,confirmed by script
+pins_3-11_run2.csv,135.25,140.37,0x318 / 0x3B2,right turn,0x318 b0=02; 0x3B2 b0 blinks 0x13,Right turn signal.,confirmed by script
+pins_3-11_run2.csv,142.21,143.19,0x122 / 0x322,crank / start,0x122 05 then 15; RPM>200 at 143.06,Engine start.,confirmed by script; 0x122 crank codes educated guess vs Jeep map
+pins_3-11_run2.csv,143.19,170.0,0x322 / 0x2C2,idle,RPM ~700; battery charging,Idle after start (about 27 s vs the 30 s in the script).,confirmed by script
+pins_3-11_run2.csv,170.0,180.0,0x322,RPM,blip to ~2154,First no-load rev ~2000 rpm.,confirmed by script
+pins_3-11_run2.csv,185.0,195.0,0x322,RPM,"blip to ~2131, then 0 at 199.95","Second no-load rev, then key off at 199.75 (0x122 -> 03 then 00 01).",confirmed by script

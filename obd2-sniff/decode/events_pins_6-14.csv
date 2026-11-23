@@ -1,0 +1,14 @@
+log,t_start_s,t_end_s,id,signal,observed,interpretation,confidence
+pins_6-14.csv,0.0,63.75,0x108,ENGINE_RPM,0,"Key on, engine off",known (opendbc; RPM=0)
+pins_6-14.csv,63.75,64.5,0x108,ENGINE_RPM,0 to 942,Engine crank / start,known (opendbc)
+pins_6-14.csv,64.5,108.0,0x108,ENGINE_RPM,~690-710,Idle,known (opendbc)
+pins_6-14.csv,90.01,95.42,0x334,byte6 illumination,00 then C8 then 00,"Headlights / park lights on, then off. Dash illumination candidate at 0xC8.",educated guess (0xC8 = Jeep $291 dimmer max; coincident with 0x334 high-beam / stalk)
+pins_6-14.csv,92.17,94.33,0x334 / 0x318,high beam,0x334 b7 has bit2; 0x318 byte0=0x04,High beam on during the lights-on window,known ID (opendbc HIGH_BEAM_DISPLAY / HIGH_BEAM_PRESSED); verified by coincidence
+pins_6-14.csv,97.04,105.92,0x318,byte2,00-01-02-03-04-05-0D-0E then back to 00,Wipers cycled through speeds (including 0x0D/0x0E) then off,educated guess (JL puts wipers in 0x318; one rising/falling burst)
+pins_6-14.csv,108.7,112.9,0x11C / 0x140,brake pedal,0x11C raw 0-1654; 0x140 byte0 0x80->0x85,Brake pedal pressed and released,known (opendbc ESP_8 / ESP_1)
+pins_6-14.csv,115.12,115.76,0x120 / 0x108,APS / RPM,APS to 24%,Light throttle blip,known (opendbc)
+pins_6-14.csv,117.82,118.58,0x120 / 0x108,APS / RPM,APS to 66%; RPM to 2664,Larger throttle blip,known (opendbc)
+pins_6-14.csv,124.08,124.4,0x318,byte0,0x40 pulse,Unknown stalk or column button (also seen on the IHS log). Not identified.,unknown
+pins_6-14.csv,126.64,127.52,0x318,byte0,0x04,Short high-beam flash (stalk 0x04),educated guess (same code as the earlier high-beam event)
+pins_6-14.csv,128.24,130.56,0x318 / 0x334,turn A,0x318 byte0=0x01; 0x334 byte3=0x40 blinking,Turn signal A. Side unconfirmed (JL: 0x01=left; 5th-gen BCM names disagree).,known as a turn signal; side is an educated guess / unconfirmed
+pins_6-14.csv,131.6,134.64,0x318 / 0x334,turn B,0x318 byte0=0x02; 0x334 byte3=0x80 blinking,Turn signal B (the other side).,known as a turn signal; side is an educated guess / unconfirmed
