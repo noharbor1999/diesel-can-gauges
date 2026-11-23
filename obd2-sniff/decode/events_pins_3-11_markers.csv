@@ -1,0 +1,27 @@
+t_s,event,detail,confidence
+12.38,key RUN / crank,0x122 04 then 05/15; first 0x322 RPM>200 at 13.66 s,known ID; byte values educated guess
+27.738,marker 1,"idle 0 mph, ~694 rpm. Intended exhaust-brake switch = OFF (button cycle OFF→FULL→AUTO→OFF). No IHS 3-state byte found.","marker time confirmed; switch state from the button cycle, not a found byte"
+34.173,marker 2,"idle 0 mph, ~699 rpm. Intended exhaust-brake switch = FULL ON (button cycle OFF→FULL→AUTO→OFF). No IHS 3-state byte found.","marker time confirmed; switch state from the button cycle, not a found byte"
+43.938,marker 3,"idle 0 mph, ~703 rpm. Intended exhaust-brake switch = AUTO (button cycle OFF→FULL→AUTO→OFF). No IHS 3-state byte found.","marker time confirmed; switch state from the button cycle, not a found byte"
+117.018,marker 4,"45.2 mph, ~1550 rpm, 0x24E b0≈0",confirmed by markers + 0x322 / 0x24E
+120.288,marker 5,"38.7 mph, ~1332 rpm, 0x24E b0≈0",confirmed by markers + 0x322 / 0x24E
+125.923,marker 6,"42.4 mph, ~1451 rpm, 0x24E b0≈0",confirmed by markers + 0x322 / 0x24E
+127.748,marker 7,"39.2 mph, ~1348 rpm, 0x24E b0≈0",confirmed by markers + 0x322 / 0x24E
+134.373,marker 8,"53.7 mph, ~1851 rpm, 0x24E b0≈0",confirmed by markers + 0x322 / 0x24E
+139.523,marker 9,"44.4 mph, ~1542 rpm, 0x24E b0≈1",confirmed by markers + 0x322 / 0x24E
+143.988,marker 10,"49.8 mph, ~1712 rpm, 0x24E b0≈0",confirmed by markers + 0x322 / 0x24E
+147.533,marker 11,"45.4 mph, ~1570 rpm, 0x24E b0≈9",confirmed by markers + 0x322 / 0x24E
+149.873,marker 12,"45.4 mph, ~1554 rpm, 0x24E b0≈0",confirmed by markers + 0x322 / 0x24E
+48.261,Tow/Haul candidate ON,"IHS 0x30A byte 4 0xFC→0xFE (bit 1), stays 0xFE. Same pattern as CAN-C 0x170 byte 1 on the earlier drive. Was 0xFC the whole running portion of run 2.",educated guess (strengthened by run-2 contrast)
+50.331,service brake + shift out of Park,0x332 byte 2 0x18→0x58 (bit 6). 0x322 byte 4 0x34→0x35→0x01→0x2D (Park/Neutral/Reverse educated guess). Creep starts 57.86 s.,brake flag confirmed; gear educated guess
+72.26,unmarked first pull then service-brake stop,"Accel ~72-80 s to ~25 mph; 0x332 bit 6 on 85.74-92.19 s, stopped by ~90 s.",confirmed by 0x322 / 0x332
+92.19,second pull (unmarked coast 102-110 s),"Hard accel 92-102 s, peak RPM 2626 at 99.36 s, 43.9 mph; mild unmarked coast 102-110 s (no service brake).",confirmed by 0x322 / 0x332
+117.018,braking event 1 starts (M4 let-off),"45.2→38.7 mph in 3.27 s, 0x24E b0=0, no service brake.",confirmed by markers
+120.288,back on throttle (M5),Speed rises; 0x24E b0 up.,confirmed by markers
+125.923,braking event 2 starts (M6 let-off),"Short 1.83 s, 42.4→39.5 mph, 0x24E b0=0, no service brake. Real let-off, not a dead click.",confirmed by markers
+127.748,back on throttle (M7),Accel to log max 55.03 mph at 133.26 s.,confirmed by markers
+134.373,braking event 3 starts (M8 let-off),"53.7→44.4 mph in 5.15 s, 0x24E b0≈0, no service brake.",confirmed by markers
+139.523,back on throttle (M9),Speed rises again.,confirmed by markers
+143.988,M10 — intended 'switched to AUTO',"Kinematically a let-off (49.8→45 mph, APS drops). No IHS switch-byte change found. If M3 already left the switch in AUTO, this is more likely the first auto-event let-off (or a switch click we cannot see on IHS).",kinematics confirmed; switch change not found on IHS
+147.533,M11 — brief throttle,"0x24E b0 rises, speed nearly flat (~45-47 mph).",confirmed by markers
+149.873,M12 then service-brake stop,0x332 bit 6 on at 150.54 s; 45→6 mph by end. Marks 13-16 never happened — log was cut short.,confirmed by markers + 0x332
