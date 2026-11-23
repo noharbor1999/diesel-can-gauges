@@ -1,0 +1,21 @@
+t_s,event,detail,confidence
+3.263,marker 15 OFF,"Already 0x00 at log start; no byte change. Idle, 0 mph.",confirmed by markers
+6.852,exhaust-brake switch FULL,"0x30A byte 2 0x00→0x80, 0.43 s before marker 16",confirmed by markers
+7.283,marker 16 FULL,"Idle, 0 mph. Switch changed at 6.852 s.",confirmed by markers
+12.153,exhaust-brake switch AUTO,"0x30A byte 2 0x80→0xA0, 0.07 s before marker 17",confirmed by markers
+12.223,marker 17 AUTO,"Idle, 0 mph. Switch changed at 12.153 s.",confirmed by markers
+17.053,exhaust-brake switch OFF,"0x30A byte 2 0xA0→0x00, 0.47 s before marker 18",confirmed by markers
+17.518,marker 18 OFF,"Idle, 0 mph. Switch changed at 17.053 s.",confirmed by markers
+21.353,exhaust-brake switch FULL,"0x30A byte 2 0x00→0x80, 0.35 s before marker 19. Stays 0x80 through the end of the log (no AUTO on the drive).",confirmed by markers
+21.698,marker 19 FULL,"Idle, 0 mph. Switch changed at 21.353 s.",confirmed by markers
+29.05,Tow/Haul candidate ON,"0x170 byte 1 252→254 (bit 1). After the park switch clicks, as he starts to roll (first mph>1 at 27.03 s). Same procedural moment as IHS 0x30A b4 FC→FE.",educated guess
+73.681,first marked-drive pull starts,APS rises; unmarked driveway crawl / service-brake stops already happened 24–73 s.,confirmed (0x120 / 0x11C / 0x140)
+79.793,marker 20 — mid first pull,"25.8 mph, APS 58%, 0x30A b7=0, still FULL. Not a let-off and not an AUTO switch. Extra click during the accel up to event 1.",confirmed by markers + APS/speed
+87.593,marker 21 — let-off 1 (FULL),APS already 0 (dropped ~86.52 s). 0x30A b7 rises at 88.16 s to 54–58. Coast 51.2→41.5 mph. No service brake.,confirmed by markers
+94.828,marker 22 — back on throttle,"APS 46%, b7=0, speed rises.",confirmed by markers
+99.773,marker 23 — let-off 2 (FULL),"APS=0, b7 rises to 51–56. Coast 50.5→40.4 mph.",confirmed by markers
+105.238,marker 24 — back on throttle,"APS 45%, b7=0.",confirmed by markers
+110.118,marker 25 — let-off 3 (FULL),"APS=0, b7 rises to 49–55. Coast 49.3→39.5 mph.",confirmed by markers
+116.163,marker 26 — back on throttle,"APS 40%, b7=0.",confirmed by markers
+120.893,marker 27 — let-off 4 (FULL),"APS=0, b7 rises to 47–52. No closing throttle mark. Service brake at 126.82 s, then markers 28–36 end burst (ignored).",confirmed by markers
+126.819,service brake to end,"0x140 0x85 and 0x11C pedal from 126.80 s. Markers 28–36 at 127.24–128.85 s are a deliberate burst, ignored.",confirmed

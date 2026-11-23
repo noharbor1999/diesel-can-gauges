@@ -1,0 +1,14 @@
+log,t_start_s,t_end_s,id,signal,observed,interpretation,confidence
+pins_6-14_run2.csv,0.0,16.29,bus rate,key off,"Traffic winds down 0-10 s, then ~6 s of silence, 0x108 starts at 16.29","Key off, then key ON. CAN-C diagnostic traffic is quiet until key on.",confirmed by script
+pins_6-14_run2.csv,16.29,29.53,0x108 / 0x122,"key on, RPM=0","0x108 present, RPM 0","Key ON, engine off.",confirmed by script
+pins_6-14_run2.csv,29.53,42.88,0x334,byte0,"0x40 -> 00 at 29.53, back to 0x40 at 42.88","Lock (byte0=0x00), wait, unlock (byte0=0x40). Opposite polarity from IHS 0x2FA byte0. 0x1C0 unchanged.",confirmed by script
+pins_6-14_run2.csv,55.82,68.24,0x334,bytes 6 and 7,"b6=C8, b7=02, b2=01 for ~12 s, then 0","Headlights on, then off. 0x334 byte6 is illumination output, not the wheel itself.",confirmed by script
+pins_6-14_run2.csv,68.24,103.71,0x334,byte6,stayed 00 the whole dimmer window; no other 0-200 proportional byte found,Dimmer step with headlights off: no proportional dimmer signal on CAN-C.,confirmed by script
+pins_6-14_run2.csv,103.71,114.35,0x318 / 0x334,wipers,0x318 b2 held at 0x0D; 0x334 b7=01 while wiping,"Wipers low, then off.",confirmed by script
+pins_6-14_run2.csv,126.56,132.68,0x11C / 0x140,brake,"0x11C pedal raw 0-1199; 0x140 byte0 80->85->80, ~6 s","Brake pedal held ~6 s, then released.",confirmed by script; known (opendbc)
+pins_6-14_run2.csv,143.15,149.47,0x318 / 0x334,left turn,0x318 b0=01; 0x334 b3 blinks 0x40. No 0x02 / 0x80 in this session.,Left turn only. Right turn was not logged on this CAN-C pass.,confirmed by script (left); right missing in this file
+pins_6-14_run2.csv,154.69,155.5,0x108,ENGINE_RPM,"last 0 at 154.69, first >200 at 155.12, peak crank then ~700 idle",Engine start.,confirmed by script; known (opendbc)
+pins_6-14_run2.csv,155.12,189.45,0x108,idle,RPM ~700,Idle after start (~34 s vs 30 s script).,confirmed by script
+pins_6-14_run2.csv,189.45,195.59,0x120 / 0x108 / 0x30A,rev 1,APS to 11.6%; RPM to ~2040; 0x30A b6 0->27 with lag,First no-load ~2000 rpm rev.,confirmed by script
+pins_6-14_run2.csv,202.65,210.51,0x120 / 0x108 / 0x30A,rev 2,APS to 11.2%; RPM to 2131; 0x30A b6 0->31 with lag,Second no-load ~2000 rpm rev (about 7 s after the first ended).,confirmed by script
+pins_6-14_run2.csv,217.53,235.6,0x108 / bus rate,key off,0x108 stops at 217.53 still showing ~700; traffic then decays,Key off. ECM stopped broadcasting rather than sending RPM=0.,confirmed by script
