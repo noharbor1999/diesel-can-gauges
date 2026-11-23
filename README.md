@@ -40,6 +40,12 @@ Useful broadcast IDs on CAN-C: **0x101** (load), **0x30A** (byte 2 exhaust-brake
 
 The hub talks to the three displays over ESP-NOW. **Flash the hub and all three displays together** (packet version must match). A mismatched display shows NO SIGNAL.
 
+Preview of every gauge3 v2 face (rendered from the same `ui.cpp` drawing code that runs on the displays), using values from a Nov 22 2026 drive log:
+
+![gauge3 v2 contact sheet](gauges/firmware/gauge3_v1/previews_v2/00_contact_sheet.png)
+
+Listen-only sniffer wiring (CTX tied to 3.3 V) is in [`obd2-sniff/wiring/sniffer_usb_schematic_v3.png`](obd2-sniff/wiring/sniffer_usb_schematic_v3.png). Decode plots live under [`obd2-sniff/decode/plots/`](obd2-sniff/decode/plots/). Case previews and the printable 3MF are in [`sniffer-case/exports/`](sniffer-case/exports/).
+
 ## Status and roadmap
 
 **Works today (tested on a 2017 Ram 3500 6.7 Cummins):**

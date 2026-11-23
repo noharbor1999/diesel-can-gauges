@@ -59,6 +59,12 @@ Use a WCMCU-230 or similar 3.3 V SN65HVD230 module. Power the module from the XI
 - **Listen-only (v3 and earlier, or any build that must not drive the bus):** tie CTX to **3.3 V**. The firmware TX pin is unused. This is what [obd2-sniff/wiring](obd2-sniff/wiring/) schematic v3 shows.
 - **v4 sniffer with the Mode 01 poller, or the gauge hub:** wire CTX to **D3 / GPIO21**. The controller runs in normal mode so it can ACK and send read requests.
 
+Listen-only schematic (v3). For the v4 poller, move CTX from 3.3 V to D3 / GPIO21:
+
+![Sniffer schematic v3](obd2-sniff/wiring/sniffer_usb_schematic_v3.png)
+
+A printable pin-identification worksheet is in [`obd2-sniff/docs/OBD2_pin_ID_guide.pdf`](obd2-sniff/docs/OBD2_pin_ID_guide.pdf).
+
 Optional: a momentary switch from XIAO **D5 / GPIO23** to GND injects a marker frame (extended ID 0x1FFFFFF0) into the GVRET stream only — it is not placed on the truck bus. BOOT (GPIO15 is the LED; BOOT is GPIO9) is a second marker input on the v4 C6 build.
 
 Keep CAN-H/CAN-L a twisted pair. The printable case (`sniffer-case/`) is 50 × 35 × 20 mm and has a USB-C opening and a three-wire exit.
@@ -152,11 +158,15 @@ Scripts expect a SavvyCAN/GVRET CSV in a local `data/logs/` folder (that folder 
 | `pid_poll_decode.py` | Rebuild PID time series from a v4 poller log |
 | `drive_decode.py`, `v4drive_decode.py`, `canc_marker_decode.py`, `marker_decode.py`, `dimmer_decode.py`, `run2_decode.py` | Session-specific decoders used to produce the checked-in plots and event CSVs |
 
-This repo ships **decoded summaries and plots only**, not the raw multi-megabyte CSVs. Re-run a script against your own log to reproduce a plot. A short README in `obd2-sniff/decode/` explains the ID map.
+This repo ships **decoded summaries and plots only**, not the raw multi-megabyte CSVs. Re-run a script against your own log to reproduce a plot. A short README in `obd2-sniff/decode/` explains the ID map. Example: the v4 drive overview is [`obd2-sniff/decode/plots/v4drive_overview.png`](obd2-sniff/decode/plots/v4drive_overview.png).
+
+![v4 drive overview](obd2-sniff/decode/plots/v4drive_overview.png)
 
 ## 7. Gauge hub and three displays
 
 **Flash the hub and all three displays with matching firmware.** The ESP-NOW packet version (`G3_VERSION`) must agree. A v1 display shows NO SIGNAL with a v2 hub, and the reverse is also true.
+
+Rendered previews of every face (v2) are in [`gauges/firmware/gauge3_v1/previews_v2/`](gauges/firmware/gauge3_v1/previews_v2/), including the [contact sheet](gauges/firmware/gauge3_v1/previews_v2/00_contact_sheet.png).
 
 ### Hub wiring (ESP32-S3 N16R8)
 
@@ -221,10 +231,13 @@ Print files live in [`sniffer-case/`](sniffer-case/):
 |---|---|
 | `exports/can_case_v01_base.stl` | Base, print orientation (floor down) |
 | `exports/can_case_v01_lid.stl` | Lid, print orientation (outer face down) |
+| `exports/can_case_v01.3mf` | Both parts on a 256 mm plate, print orientation |
 | `exports/can_case_v01_base.step`, `can_case_v01_lid.step` | CAD / remix |
 | `src/can_case_v01.py` | CadQuery model, parameters at the top |
 
-A geometry-only 3MF (both parts on a 256 mm plate) is produced by `src/export_v01.py`. If that binary is not in the tree you cloned, slice the two STLs or re-export from the CadQuery script.
+![Assembled sniffer case, USB-C end](sniffer-case/exports/can_case_v01_assembled_usb_end.png)
+
+More preview images (base, lid, sections) are in [`sniffer-case/exports/`](sniffer-case/exports/). You can also re-export the 3MF with `src/export_v01.py`.
 
 **Orientation (from the v01 export):** base floor-down, lid outer face down. Outer size 50 × 35 × 20 mm (base 17 mm + lid 3 mm), 2.0 mm walls and floor. Four M2 heat-set inserts in the corner bosses; lid uses M2 × 6 socket caps.
 
